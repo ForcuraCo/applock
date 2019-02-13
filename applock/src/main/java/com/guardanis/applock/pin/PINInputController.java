@@ -12,7 +12,7 @@ public class PINInputController implements TextView.OnEditorActionListener {
         public void onInputEntered(String input);
     }
 
-    private WeakReference<PINInputView> inputView;
+    public WeakReference<PINInputView> inputView;
     private WeakReference<InputEventListener> eventListener = new WeakReference<InputEventListener>(null);
 
     /**
@@ -34,7 +34,7 @@ public class PINInputController implements TextView.OnEditorActionListener {
             public void run() {
                 inputView.ensureKeyboardVisible();
             }
-        }, 300);
+        }, 0);
 
         return this;
     }

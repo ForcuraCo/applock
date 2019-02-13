@@ -4,12 +4,15 @@ import android.app.Activity;
 import android.view.View;
 
 import com.guardanis.applock.R;
+import com.guardanis.applock.pin.PINInputView;
 import com.guardanis.applock.views.LockCreationViewController;
 
 public class LockCreationDialogBuilder extends AppLockDialogBuilder<LockCreationViewController> implements LockCreationViewController.Delegate {
 
     protected Runnable lockCreatedCallback;
     protected Runnable canceledCallback;
+
+    public PINInputView inputView;
 
     public LockCreationDialogBuilder(Activity activity) {
         super(activity, R.layout.applock__lock_creation);
@@ -37,6 +40,8 @@ public class LockCreationDialogBuilder extends AppLockDialogBuilder<LockCreation
     protected LockCreationViewController buildViewControllerInstance(View parent) {
         LockCreationViewController controller = new LockCreationViewController(activity.get(), parent);
         controller.setDelegate(this);
+
+        inputView = controller.getPINInputController().inputView.get();
 
         return controller;
     }

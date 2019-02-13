@@ -27,7 +27,7 @@ public class PINInputView extends LinearLayout implements TextWatcher {
     private int inputViewsCount = 10;
     private PINItemView[] pinItemViews;
 
-    private EditText editText;
+    public EditText editText;
     private String lastText = "";
 
     private boolean passwordCharactersEnabled = true;
@@ -72,6 +72,9 @@ public class PINInputView extends LinearLayout implements TextWatcher {
         editText.setInputType(InputType.TYPE_CLASS_NUMBER);
         editText.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);
         editText.addTextChangedListener(this);
+//        editText.setFocusableInTouchMode(true);
+        editText.setWidth(1);
+        editText.setHeight(1);
 
         addView(editText);
     }
@@ -105,8 +108,12 @@ public class PINInputView extends LinearLayout implements TextWatcher {
     public void ensureKeyboardVisible() {
         editText.requestFocus();
 
-        ((InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE)).toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+        ((InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE))
+                .showSoftInput(editText, 0);
+
+                //.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
     }
+
 
     @Override
     public void onDraw(Canvas canvas) {
