@@ -103,10 +103,21 @@ public class PINInputView extends LinearLayout implements TextWatcher {
     }
 
     public void ensureKeyboardVisible() {
-        editText.requestFocus();
+        //editText.requestFocus();
 
-        ((InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE))
-                .showSoftInput(editText, 0);
+        final InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        editText.postDelayed(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                editText.requestFocus();
+                imm.showSoftInput(editText, 0);
+            }
+        }, 100);
+
+//        ((InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE))
+//                .showSoftInput(editText, 0);
     }
 
     @Override

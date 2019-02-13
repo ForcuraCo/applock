@@ -17,6 +17,7 @@
 
     <com.guardanis.applock.pin.PINInputView
         android:id="@+id/pin__input_view"
+        android:focusableInTouchMode="true"
         style="@style/applock__input_pin_view"/>
 
     <androidx.appcompat.widget.AppCompatTextView
