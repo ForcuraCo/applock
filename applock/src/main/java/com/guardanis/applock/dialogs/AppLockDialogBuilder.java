@@ -9,6 +9,7 @@ import android.os.Build;
 import android.view.View;
 
 import com.guardanis.applock.AppLock;
+import com.guardanis.applock.pin.PINInputView;
 import com.guardanis.applock.views.AppLockViewController;
 
 import java.lang.ref.WeakReference;
@@ -23,6 +24,7 @@ public abstract class AppLockDialogBuilder<ALVC extends AppLockViewController> {
 
     protected WeakReference<AppCompatDialog> dialog = new WeakReference<AppCompatDialog>(null);
     protected int layoutResId;
+    protected PINInputView pinInputView;
 
     public AppLockDialogBuilder(Activity activity, int layoutResId) {
         this.activity = new WeakReference<Activity>(activity);
@@ -60,6 +62,8 @@ public abstract class AppLockDialogBuilder<ALVC extends AppLockViewController> {
         AppCompatDialog dialog = builder.show();
 
         this.dialog = new WeakReference<AppCompatDialog>(dialog);
+
+        this.pinInputView = this.viewController.getPINInputController().inputView.get();
 
         return dialog;
     }

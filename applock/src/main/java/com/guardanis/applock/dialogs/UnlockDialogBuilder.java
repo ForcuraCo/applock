@@ -6,12 +6,17 @@ import android.view.View;
 
 import com.guardanis.applock.AppLock;
 import com.guardanis.applock.R;
+import com.guardanis.applock.pin.PINInputView;
 import com.guardanis.applock.views.UnlockViewController;
 
 public class UnlockDialogBuilder extends AppLockDialogBuilder<UnlockViewController> implements UnlockViewController.Delegate {
 
     protected Runnable unlockCallback;
     protected Runnable canceledCallback;
+
+    public PINInputView getPINInputView() {
+        return pinInputView;
+    }
 
     public UnlockDialogBuilder(Activity activity) {
         super(activity, R.layout.applock__unlock);

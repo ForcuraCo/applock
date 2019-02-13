@@ -12,7 +12,9 @@ public class LockCreationDialogBuilder extends AppLockDialogBuilder<LockCreation
     protected Runnable lockCreatedCallback;
     protected Runnable canceledCallback;
 
-    public PINInputView inputView;
+    public PINInputView getPINInputView() {
+        return pinInputView;
+    }
 
     public LockCreationDialogBuilder(Activity activity) {
         super(activity, R.layout.applock__lock_creation);
@@ -40,8 +42,6 @@ public class LockCreationDialogBuilder extends AppLockDialogBuilder<LockCreation
     protected LockCreationViewController buildViewControllerInstance(View parent) {
         LockCreationViewController controller = new LockCreationViewController(activity.get(), parent);
         controller.setDelegate(this);
-
-        inputView = controller.getPINInputController().inputView.get();
 
         return controller;
     }
