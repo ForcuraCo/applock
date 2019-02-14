@@ -72,9 +72,6 @@ public class PINInputView extends LinearLayout implements TextWatcher {
         editText.setInputType(InputType.TYPE_CLASS_NUMBER);
         editText.setImeOptions(EditorInfo.IME_FLAG_NO_EXTRACT_UI);
         editText.addTextChangedListener(this);
-//        editText.setFocusableInTouchMode(true);
-        editText.setWidth(1);
-        editText.setHeight(1);
 
         addView(editText);
     }
